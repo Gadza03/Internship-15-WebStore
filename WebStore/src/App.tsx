@@ -1,5 +1,6 @@
-import { BrowserRouter, useNavigate } from "react-router";
+import { BrowserRouter } from "react-router";
 import Router from "./Router";
+import "./styles/index.css";
 function App() {
   return (
     <BrowserRouter>
