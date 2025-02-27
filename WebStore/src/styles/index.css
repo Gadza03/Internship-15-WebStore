@@ -24,3 +24,7 @@ body {
   padding-inline: 2rem;
   margin: 0 auto;
 }
+
+button {
+  cursor: pointer;
+}

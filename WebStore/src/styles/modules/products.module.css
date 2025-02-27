@@ -1,3 +1,57 @@
-.paddingNav {
+.productsWrapper {
   padding-top: 100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.singleProductWrapper {
+  background-color: var(--white);
+  color: var(--background-color);
+  border-radius: 4px solid black;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.singleProductWrapper:hover > .imageContainer {
+  transform: translateY(-5px);
+}
+
+.imageContainer {
+  margin: 0 auto;
+  width: 70%;
+  height: 280px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.singleProductWrapper:hover .productImage {
+  transform: scale(1.05);
+}
+
+.productDetails {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  row-gap: 1rem;
+}
+
+.productTitle {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.productPrice {
+  font-weight: 900;
 }

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Product } from "../types/Product";
 import { fetchProducts } from "../api";
-import c from "../styles/modules/products.module.css";
+import ProductsList from "../components/ProductsList";
 
 export default function ProductPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -13,18 +13,10 @@ export default function ProductPage() {
       const response = await fetchProducts();
       const data = await response;
       setProducts(data);
-      console.log(data);
     };
 
     fetchData();
   }, []);
 
-  const changeOnSingle = (id: number) => {
-    navigate(`product/${id}`);
-  };
-  return (
-    <div className={`container ${c.paddingNav}`}>
-      <p onClick={() => changeOnSingle(2)}>Productpage</p>
-    </div>
-  );
+  return <ProductsList products={products} />;
 }
