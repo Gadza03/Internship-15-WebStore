@@ -18,11 +18,19 @@ export default function ProductsList({ products }: ProductsListProps) {
         .toLowerCase()
         .includes(searchValue.toLowerCase());
       const matchesCategory =
-        category === "all" || product.category === category;
+        category === ProductCategory.All || product.category === category;
 
       return matchesSearch && matchesCategory;
     });
   }, [products, searchValue, category]);
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
+
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setCategory(e.target.value);
+  };
 
   return (
     <div className={`container ${c.pageWrapper}`}>
@@ -32,15 +40,13 @@ export default function ProductsList({ products }: ProductsListProps) {
           className={c.searchBar}
           placeholder="Search..."
           value={searchValue}
-          onChange={(e) => {
-            setSearchValue(e.target.value);
-          }}
+          onChange={handleSearchChange}
         />
 
         <select
           id={c.selectFilter}
           value={category}
-          onChange={(e) => setCategory(e.target.value)}
+          onChange={handleCategoryChange}
         >
           {Object.values(ProductCategory).map((category) => (
             <option key={category} value={category}>
