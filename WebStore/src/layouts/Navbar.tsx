@@ -4,6 +4,7 @@ import { paths } from "../path";
 
 export default function Navbar() {
   const navigate = useNavigate();
+
   const handleNavigateToProducts = () => {
     navigate(paths.products);
   };

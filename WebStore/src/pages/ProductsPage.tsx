@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Product } from "../types/Product";
 import { fetchProducts } from "../api";
+import c from "../styles/modules/products.module.css";
 
 export default function ProductPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -22,7 +23,7 @@ export default function ProductPage() {
     navigate(`product/${id}`);
   };
   return (
-    <div>
+    <div className={`container ${c.paddingNav}`}>
       <p onClick={() => changeOnSingle(2)}>Productpage</p>
     </div>
   );

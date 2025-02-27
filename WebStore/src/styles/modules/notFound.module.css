@@ -1,0 +1,13 @@
+.pageNotFoundWrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-image: url("../../assets/images/error404.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right 50px;
+}
+
+.pageNotFound {
+  font-size: 4rem;
+}
