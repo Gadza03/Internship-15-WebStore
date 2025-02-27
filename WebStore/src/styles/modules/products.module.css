@@ -1,9 +1,37 @@
+.pageWrapper {
+  padding-top: 120px;
+}
+
 .productsWrapper {
-  padding-top: 100px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
   justify-content: center;
+}
+
+.searchFilter {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+#selectFilter,
+.searchBar {
+  border: 1px solid grey;
+  background-color: transparent;
+  color: white;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.searchBar::placeholder {
+  color: white;
+}
+
+#selectFilter option {
+  background-color: #333;
+  line-height: 2.5;
+  color: white;
 }
 
 .singleProductWrapper {
