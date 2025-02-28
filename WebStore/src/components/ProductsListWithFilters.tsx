@@ -1,14 +1,19 @@
 import { Product } from "../types/Product";
 import c from "../styles/modules/products.module.css";
-import ProductCard from "./ProductCard";
 import { ProductCategory } from "../Enums/ProductCategory";
-import { useMemo, useState } from "react";
+import { useContext, useMemo, useState } from "react";
+import ProductsList from "./ProductList";
+import { ProductContext } from "../providers/ProductsContext";
 
-type ProductsListProps = {
-  products: Product[];
-};
+export default function ProductsListWithFilters() {
+  const context = useContext(ProductContext);
 
-export default function ProductsList({ products }: ProductsListProps) {
+  if (!context) {
+    throw new Error("ProductContext must be used within a ProductProvider");
+  }
+
+  const { products } = context;
+
   const [searchValue, setSearchValue] = useState<string>("");
   const [category, setCategory] = useState<string>(ProductCategory.All);
 
@@ -56,15 +61,7 @@ export default function ProductsList({ products }: ProductsListProps) {
         </select>
       </div>
 
-      <div className={c.productsWrapper}>
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product: Product) => (
-            <ProductCard key={product.id} product={product} />
-          ))
-        ) : (
-          <p>No items found.</p>
-        )}
-      </div>
+      <ProductsList products={filteredProducts} />
     </div>
   );
 }
