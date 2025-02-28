@@ -1,18 +1,12 @@
 import { Product } from "../types/Product";
 import c from "../styles/modules/products.module.css";
 import { ProductCategory } from "../Enums/ProductCategory";
-import { useContext, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import ProductsList from "./ProductList";
-import { ProductContext } from "../providers/ProductsContext";
+import { useProducts } from "../providers/ProductsContext";
 
 export default function ProductsListWithFilters() {
-  const context = useContext(ProductContext);
-
-  if (!context) {
-    throw new Error("ProductContext must be used within a ProductProvider");
-  }
-
-  const { products } = context;
+  const { products } = useProducts();
 
   const [searchValue, setSearchValue] = useState<string>("");
   const [category, setCategory] = useState<string>(ProductCategory.All);
