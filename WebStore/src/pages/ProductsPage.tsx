@@ -3,7 +3,7 @@ import { Product } from "../types/Product";
 import { fetchProducts } from "../api";
 import ProductsList from "../components/ProductsList";
 
-const PRODUCT_ITEMS = "products";
+export const PRODUCT_ITEMS = "products";
 
 export default function ProductPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -18,7 +18,13 @@ export default function ProductPage() {
     } else {
       fetchProducts()
         .then((data) => {
-          setProducts(data);
+          const formattedData = data.map((product: any) => ({
+            ...product,
+            rating: product.rating.rate,
+          }));
+
+          setProducts(formattedData);
+          localStorage.setItem(PRODUCT_ITEMS, JSON.stringify(formattedData));
         })
         .catch((error) => console.error("Error fetching products:", error));
     }

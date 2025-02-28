@@ -11,7 +11,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const navigate = useNavigate();
 
   const handleSeeMore = (id: number) => {
-    navigate(paths.singleProduct(id));
+    navigate(paths.singleProduct(id), { state: product });
   };
 
   return (
