@@ -41,7 +41,6 @@ export default function ProductsProvider({
             ...product,
             rating: product.rating.rate,
           }));
-
           setProducts(formattedData);
           localStorage.setItem(PRODUCT_ITEMS, JSON.stringify(formattedData));
         })

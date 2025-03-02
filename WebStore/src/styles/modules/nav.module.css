@@ -4,7 +4,7 @@
   font-style: italic;
 }
 
-nav {
+.toolbar {
   display: flex;
   justify-content: space-between;
   background-color: black;
@@ -23,7 +23,13 @@ nav {
   cursor: pointer;
 }
 
-.navLinks li {
-  padding-bottom: 2px;
-  border-bottom: 1px solid var(--white-50);
+.dropdownMenu {
+  background-color: black;
+  color: white;
+}
+
+@media (max-width: 900px) {
+  .navLinks {
+    display: none;
+  }
 }

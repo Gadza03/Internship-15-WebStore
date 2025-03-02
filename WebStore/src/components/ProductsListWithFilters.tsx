@@ -5,8 +5,12 @@ import { useMemo, useState } from "react";
 import ProductsList from "./ProductList";
 import { useProducts } from "../providers/ProductsContext";
 
+const TOP_20 = "top20";
+
 export default function ProductsListWithFilters() {
-  const { products } = useProducts();
+  const { products, setProducts } = useProducts();
+
+  console.log(products);
 
   const [searchValue, setSearchValue] = useState<string>("");
   const [category, setCategory] = useState<string>(ProductCategory.All);
@@ -28,7 +32,28 @@ export default function ProductsListWithFilters() {
   };
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    if (e.target.value === TOP_20) {
+      handleTop20();
+      return;
+    }
+
+    if (e.target.value === ProductCategory.All) {
+      handleResetProducts();
+    }
+
     setCategory(e.target.value);
+  };
+
+  const handleResetProducts = () => {
+    const allProducts = JSON.parse(localStorage.getItem("products") || "[]");
+    setProducts(allProducts);
+  };
+
+  const handleTop20 = () => {
+    const top20Products = [...products]
+      .sort((a, b) => b.rating - a.rating)
+      .slice(0, 20);
+    setProducts(top20Products);
   };
 
   return (
@@ -47,6 +72,9 @@ export default function ProductsListWithFilters() {
           value={category}
           onChange={handleCategoryChange}
         >
+          <option key={TOP_20} value={TOP_20}>
+            {TOP_20}
+          </option>
           {Object.values(ProductCategory).map((category) => (
             <option key={category} value={category}>
               {category}

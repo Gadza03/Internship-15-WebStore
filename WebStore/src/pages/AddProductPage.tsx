@@ -6,7 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router";
 import { paths } from "../path";
 import { ProductCategory } from "../Enums/ProductCategory";
-import FormInput from "../components/FormInput"; // Importaj komponentu
+import FormInput from "../components/FormInput";
 
 export default function AddProductPage() {
   const { products, setProducts } = useProducts();
@@ -30,16 +30,18 @@ export default function AddProductPage() {
       return;
     }
 
-    const updatedProducts = [...products, newProduct]
-      .sort((a, b) => b.rating - a.rating)
-      .slice(0, 20);
+    const updatedProducts = [...products, newProduct];
 
     setProducts(updatedProducts);
     navigate(paths.products);
   };
 
   const validateInputs = () => {
-    return "Greska neke vrste";
+    if (newProduct.title.length < 2)
+      return "Title have to contain atleast 2 characters";
+    if (newProduct.price <= 0) return "Price have to be higher than 0.";
+    if (newProduct.description.length < 2)
+      return "Decription have to contain atleast 2 characters";
   };
 
   return (

@@ -90,3 +90,13 @@
 .youMightLikeSeciton h3 {
   font-size: 2rem;
 }
+
+@media (max-width: 768px) {
+  .singleProductInfo {
+    flex-direction: column;
+  }
+
+  .imageContainer {
+    width: 100%;
+  }
+}
