@@ -97,6 +97,11 @@
   }
 
   .imageContainer {
-    width: 100%;
+    max-width: none;
+    max-height: none;
+  }
+
+  .imageContainer img {
+    object-fit: cover;
   }
 }
