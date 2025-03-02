@@ -9,7 +9,7 @@ type FormInputProps = {
   ) => void;
   placeholder?: string;
   min?: number;
-  options?: string[]; // Za select
+  options?: string[];
 };
 
 export default function FormInput({
