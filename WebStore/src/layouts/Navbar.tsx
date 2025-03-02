@@ -59,7 +59,6 @@ export default function Navbar() {
             backgroundColor: "black",
             color: "white",
             width: "250px",
-            paddingTop: "20px",
           },
         }}
       >

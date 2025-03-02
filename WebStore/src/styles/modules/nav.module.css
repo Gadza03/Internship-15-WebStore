@@ -23,9 +23,9 @@
   cursor: pointer;
 }
 
-.dropdownMenu {
-  background-color: black;
-  color: white;
+.navLinks li {
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--white-50);
 }
 
 @media (max-width: 900px) {
